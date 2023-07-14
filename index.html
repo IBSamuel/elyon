@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>elyon</title>
+  <link rel="stylesheet" href="index.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg shadow-sm">
+    <div class="container-fluid">
+      <a class="navbar-brand text-primary" href="#">
+        <img style="width: 30px;"
+          src="data:image/jpg;base64,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"
+          alt=""></a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <i class="bi bi-toggles text-primary"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Contact
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">WhatsApp</a></li>
+              <li><a class="dropdown-item" href="#">Mail</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div id="carouselExampleDark" class="carousel carousel-dark slide shadow-sm">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="10000">
+        <img
+          src="https://i.dell.com/is/image/DellContent/content/dam/ss2/product-images/page/franchise/vostro/vostro-notebooks/5630-5635-intel-amd-/vostro-laptops-franchise-page-mod01-5630nt-fpr-1920x1440.png?fmt=png-alpha&wid=1920&hei=1440"
+          class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="h1">Your One-Stop Shop for High-performance PCs</h5>
+          <a href="" class="nav-link btn rounded rounded-4 border d-inline p-1 fw-semibold border-dark border-2">Explore
+            now</a>
+        </div>
+      </div>
+      <div class="carousel-item" data-bs-interval="2000">
+        <img
+          src="https://i.dell.com/is/image/DellContent/content/dam/ss2/product-images/page/franchise/xps/june-2022/laptop-xps-franchise-page-mod-6-1920x1440-xs9320nt-gy-xs9315nt-bl.png?fmt=png-alpha&wid=1920&hei=1440"
+          class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="h1">Upgrade to the PC of Your Dreams</h5>
+          <a href="" class="nav-link btn rounded rounded-4 border d-inline p-1 fw-semibold border-dark border-2">Explore
+            now</a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img
+          src="https://i.dell.com/is/image/DellContent/content/dam/ss2/product-images/page/franchise/inspiron/dbcs-371801-notebook-inspiron-16-5630-1920x1440-v1.psd?fmt=png-alpha&wid=1920&hei=1440"
+          class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="h1">Find the Right PC for Your Needs and Budget</h5>
+          <a href="" class="nav-link btn rounded rounded-4 border d-inline p-1 fw-semibold border-dark border-2">Explore
+            now</a>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <a href="https://wa.link/z78du1" class="fixed-bottom m-4 nav-link ">
+    <div class="d-flex">
+      <img class="contact" src="https://freepngimg.com/thumb/categories/1452.png" alt="">
+      <p class="mt-2 me-2 bg-light fw-semibold shadow p-1 rounded">Chat us up</p>
+    </div>
+  </a>
+  <br>
+  <div class="m-2 row">
+    <div class="shadow-sm">
+      <span class="fw-semibold">Todays Deals</span>
+    </div>
+  </div>
+  <div class="m-5 row gap-3">
+    <div class="shadow-sm">
+      <span class="fw-semibold">Computers</span>
+    </div>
+    <div class="card shadow-sm border-0" style="width: 18rem;">
+      <img
+        src="https://www-konga-com-res.cloudinary.com/w_auto,f_auto,fl_lossy,dpr_auto,q_auto/media/catalog/product/Y/P/118566_1635927309.jpg"
+        class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">HP Spectre X360 13-AP0781NA...</h5>
+        <p class="card-text h4">₦840,292</p>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+          View Specs
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+          aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Laptop</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body text-start">
+                <img
+                  src="https://www-konga-com-res.cloudinary.com/w_auto,f_auto,fl_lossy,dpr_auto,q_auto/media/catalog/product/Y/P/118566_1635927309.jpg"
+                  class="card-img-top" alt="...">
+                <p class="h5">HP Spectre X360 13-AP0781NA, Intel Core I5-8265U 8GB RAM 256GB SSD, Wins
+                  10 Blue (7PY32EA)</p>
+                <p class="h4">₦840,292</p>
+                <p>Specification</p>
+                <p>Operating system Windows 10 Home 64</p>
+                <p>Product color Poseidon blue</p>
+                <p>Processor family 8th Generation Intel® Core™ i5 processor</p>
+                <p>Processor</p>
+                <p>Intel® Core™ i5 8265U (1.6 GHz base frequency, up to 3.9 GHz with Intel® Turbo Boost Technology, 6 MB
+                  cache, 4 cores)</p>
+                <p>Chipset Intel® Integrated SoC</p>
+                <p>Memory 8 GB DDR4-2400 SDRAM (onboard)</p>
+                <p>Internal Storage 256 GB PCIe® NVMe™ M.2 SSD</p>
+                <p>Product design Aluminium CNC cover and keyboard, with aluminium stamping base</p>
+                <p>Optical drive Optical drive not included</p>
+                <p>Graphics Integrated</p>
+                <p>Graphics (integrated) Intel® UHD Graphics 620</p>
+                <p>Display</p>
+                <p>33.8 cm (13.3") diagonal FHD IPS micro-edge WLED-backlit touch screen with Corning® Gorilla® Glass
+                  NBT™ (1920 x 1080)</p>
+                <p>Display size (diagonal) 33.8 cm (13.3")</p>
+                <p>Audio Audio by Bang &amp; Olufsen; Quad speakers; HP Audio Boost 2.0</p>
+                <p>Minimum dimensions (W x D x H) 30.88 x 21.79 x 1.45 cm (Dimensions vary by configuration)</p>
+                <p>Weight 1.33 kg (Weight varies by configuration)</p>
+                <p>Keyboard Full-size island-style backlit keyboard</p>
+                <p>Pointing device HP Imagepad with multi-touch gesture support</p>
+                <p>Input devices Accelerometer; Gyroscope; eCompass</p>
+                <p>Webcam HP Wide Vision FHD IR Camera with integrated dual array digital microphone</p>
+                <p>Ports</p>
+                <p>2x USB Type-C™ 3.1 Gen 2 (Thunderbolt™ 3, DP 1.2, PD 3.0, Data transfer, HP Sleep and Charge ); 1x
+                  USB 3.1 Gen2 Type-A™ (HP Sleep and Charge); 1 headphone/microphone combo</p>
+                <p>Expansion slots 1 microSD media card reader</p>
+                <p>Package dimensions (W x D x H) 41.3 x 33 x 14.7 cm</p>
+                <p>Package weight 2.35 kg</p>
+                <p>Wireless Intel® Wireless-AC 9560 802.11b/g/n/ac (2x2) Wi-Fi® and Bluetooth® 5 Combo (Supporting
+                  Gigabit file transfer speeds)</p>
+                <p>Power supply type 65 W AC power adapter</p>
+                <p>Battery type 4-cell, 61 Wh Li-ion</p>
+                <p>Battery life Up to 22 hours and 30 minutes</p>
+                <span>Contact us if you like this</span>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Done</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="card shadow-sm border-0" style="width: 18rem;">
+      <img
+        src="https://www-konga-com-res.cloudinary.com/w_auto,f_auto,fl_lossy,dpr_auto,q_auto/media/catalog/product/S/E/186035_1664897306.jpg"
+        class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">HP Laptop 15 - Core I3 - 1TB....</h5>
+        <p class="card-text h4">₦279,999</p>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#second">
+          View Specs
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="second" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+          aria-labelledby="staticBackdropLabe" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabe">Laptop</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body text-start">
+                <img
+                  src="https://www-konga-com-res.cloudinary.com/w_auto,f_auto,fl_lossy,dpr_auto,q_auto/media/catalog/product/S/E/186035_1664897306.jpg"
+                  class="card-img-top" alt="...">
+                <p class="h5">HP Laptop 15 - Core I3 - 1TB Hard Drive - 8GB RAM - Touchscreen - 10th Gen
+                  - Freedos</p>
+                <p class="h4">₦279,999</p>
+                <b>Product number </b> - 3Z6Y6EA <br>
+                <b>Product name</b> - HP Laptop 15-dw1319nia<br>
+                <b>Microprocessor</b> - Intel® Core™ i3-10110U (2.1 GHz base frequency, up to 4.1 GHz with
+                Intel® Turbo Boost Technology, 4 MB L3 cache, 2 cores)<br>
+                <b>Chipset</b> - Intel® Integrated SoC<br>
+                <b>Memory, standard</b> - 8 GB DDR4-2666 MHz RAM (2 x 4 GB)<br>
+                <b>Video graphics</b> - Intel® UHD Graphics<br>
+                <b>Hard drive</b> - 1 TB 5400 rpm SATA HDD<br>
+                <b>Optical drive</b> - Optical drive not included<br>
+                <b>Display</b> - 39.6 cm (15.6″) diagonal, HD (1366 x 768), touch, micro-edge, BrightView,
+                220 nits, 45% NTSC<br>
+                <b>Wireless connectivity</b> - Realtek RTL8821CE 802.11a/b/g/n/ac (1×1) Wi-Fi® and
+                Bluetooth® 4.2 combo<br>
+                <b>Network interface Integrated</b> - 10/100/1000 GbE LAN<br>
+                <b>Expansion slots</b> - 1 multi-format SD media card reader<br>
+                <b>External ports</b> - 1 SuperSpeed USB Type-C® 5Gbps signaling rate; 2 SuperSpeed USB
+                Type-A 5Gbps signaling rate; 1 HDMI 1.4b; 1 RJ-45; 1 AC smart pin; 1
+                headphone/microphone combo<br>
+                <b>Minimum dimensions (W x D x H)</b> - 35.85 x 24.2 x 1.99 cm<br>
+                <b>Weight</b> - 2.57 kg<br>
+                <b>Power supply type</b> - 45 W Smart AC power adapter<br>
+                <b>Battery type</b> - 3-cell, 41 Wh Li-ion<br>
+                <b>Battery life mixed usage</b> - Up to 10 hours and 15 minutes<br>
+                <b>Video Playback Battery life</b> - Up to 8 hours and 30 minutes<br>
+                <b>Webcam -</b> HP True Vision 720p HD camera with integrated dual array digital
+                microphones<br>
+                <b>Audio features</b> - Dual speakers<br>
+                </span>
+                <span>Contact us if you like this</span>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Done</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="card shadow-sm border-0" style="width: 18rem;">
+      <img
+        src="https://www-konga-com-res.cloudinary.com/w_auto,f_auto,fl_lossy,dpr_auto,q_auto/media/catalog/product/O/Q/161794_1659606503.jpg"
+        class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Asus Windows 11 Home -128GB SSD....</h5>
+        <p class="card-text h3">₦192,800</p>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#third">
+          View Specs
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="third" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+          aria-labelledby="staticBackdropLabe" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabe">HP Specter</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body text-start">
+                <img
+                  src="https://www-konga-com-res.cloudinary.com/w_auto,f_auto,fl_lossy,dpr_auto,q_auto/media/catalog/product/O/Q/161794_1659606503.jpg"
+                  class="card-img-top" alt="...">
+                <p class="h5">Asus Windows 11 Home -128GB SSD - 4GB RAM - Intel Celeron N4020 -90nb0q11
+                  - Freedos</p>
+                <p class="h4">₦192,800</p>
+                <p>Number of Cores - 2 Cores</p>
+                <p>Activity - Personal</p>
+                <p>Hard Drive - 128 GB</p>
+                <p>Graphics - VGA</p>
+                <p>Wireless - Yes</p>
+                <p>USB Ports - 3 x USB 2.0, VGA, HDMI</p>
+                <p>Battery - 3Cell Battery</p>
+                <p>Operating System - Windows</p>
+                <p>Graphics Processor - Intel Integrated Graphics</p>
+                <p>Brand -</p>
+                <p>Screen size - 11.6 inches</p>
+                <p>Resolution (Display) - 1366 x 768</p>
+                <p>RAM - 4 GB</p>
+                <p>Number of Cores - 2 Cores</p>
+                <p>Storage Type - SSD</p>
+                <p>Display Technology - LCD</p>
+                <p>Colour - Blue</p>
+
+                </span>
+                <span>Contact us if you like this</span>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Done</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card shadow-sm border-0" style="width: 18rem;">
+      <img
+        src="https://www-konga-com-res.cloudinary.com/w_auto,f_auto,fl_lossy,dpr_auto,q_auto/media/catalog/product/J/S/192619_1664293724.jpg"
+        class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">HP Chromebook X360 -11.6" -4 GB ROM...</h5>
+        <p class="card-text h4">₦235,000</p>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#fourth">
+          View Specs
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="fourth" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+          aria-labelledby="staticBackdropLabe" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabe">Laptop</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body text-start">
+                <img
+                  src="https://www-konga-com-res.cloudinary.com/w_auto,f_auto,fl_lossy,dpr_auto,q_auto/media/catalog/product/J/S/192619_1664293724.jpg"
+                  class="card-img-top" alt="...">
+                <p class="h5">HP Chromebook X360 -11.6" -4 GB ROM -32 GB RAM-Intel Celeron
+                  - Freedos</p>
+                <p class="h4">₦235,000</p>
+                <p>Activity - Personal</p>
+                <p>Resolution (Display) - 1366 x 768</p>
+                <p>RAM - 4 GB</p>
+                <p>Hard Drive - 32 GB</p>
+                <p>Graphics - VGA</p>
+                <p>Brand - HP</p>
+                <p>Wireless - WiFi, Bluetooth</p>
+                <p>Screen size - 11.6 inches</p>
+                <p>USB Ports - 2 x USB 3.0</p>
+                <p>Battery - 2 x 2-cell Li-Ion polymer</p>
+                <p>Operating System - Chrome</p>
+                <p>Graphics Processor - Intel Integrated Graphics</p>
+                <p>Storage Type - SSD</p>
+                <p>Display Technology - LCD</p>
+                <p>Number of Cores - 2 Cores</p>
+                <p>Colour - Black</p>
+                <p>Warranty Period - 1 Year</p>
+
+                </span>
+                <span>Contact us if you like this</span>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Done</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="shadow-sm fw-semibold">
+      <span>Accessories</span>
+    </div>
+    <div class="card shadow-sm border-0" style="width: 18rem;">
+      <img
+        src="https://www-konga-com-res.cloudinary.com/w_auto,f_auto,fl_lossy,dpr_auto,q_auto/media/catalog/product/P/K/198709_1651579469.jpg"
+        class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Cooler Pad For Laptops</h5>
+        <p class="card-text h4">₦10,000</p>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#fifth">
+          View Specs
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="fifth" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+          aria-labelledby="staticBackdropLabe" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabe">HP Specter</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body text-start">
+                <img
+                  src="https://www-konga-com-res.cloudinary.com/w_auto,f_auto,fl_lossy,dpr_auto,q_auto/media/catalog/product/P/K/198709_1651579469.jpg"
+                  class="card-img-top" alt="...">
+                <p class="h5">Cooler Pad For Laptops</p>
+                <p class="card-text h4">₦10,000</p>
+                <p>
+                  High speed quiet fan The light and portable laptop cooling pad works with most laptops up to 12-15.6
+                  inch. Meet your needs when using laptop home/ office, work/ games.
+                </p>
+
+                <p>
+                  Super Cooling &amp; Quiet Fans Laptop Cooling Pad is with 1 large fan: 140 mm, optimized 12"- 15.6"
+                  laptop cooling effect. The high-quality metal mesh provides your laptop a wear-resisting and firm
+                  laptop carrying surface. This material can draw heat away from laptop, improve heat dissipation.
+                </p>
+
+                <p>
+                  Ergonomic Comfort Cooler Five adjustable height settings to put the stand up or flat and hold your
+                  laptop in a suitable position. The baffle prevents your laptop from sliding down or falling off. 5
+                  heights adjustment allow you to raise your viewing and typing experience, thus relieving the pain on
+                  your neck and back.
+                </p>
+
+                <p>
+                  Easy Operation &amp; Extra USB Port Extra USB port and Power switch design. Built-in dual-USB hub
+                  allows for connecting more USB devices. Within two USB ports make this laptop cooler more convenient
+                  to use. One to connect laptop for powering. Another to connect extra USB devices, like USB flash
+                  drives, keyboard, etc.
+                </p>
+
+                <p>
+                  Cooler with Led light The laptop cooling fan has blue LEDs that illuminates it while working. It looks
+                  nice especially in dark conditions.
+                </p>
+
+                <span>Contact us if you like this</span>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Done</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card shadow-sm border-0" style="width: 18rem;">
+      <img
+        src="https://www-konga-com-res.cloudinary.com/w_auto,f_auto,fl_lossy,dpr_auto,q_auto/media/catalog/product/K/Q/180272_1669893539.jpg"
+        class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Nillkin Ascent Stand...</h5>
+        <p class="card-text h4">₦23,000 </p>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#sixth">
+          View Specs
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="sixth" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+          aria-labelledby="staticBackdropLabe" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabe">HP Specter</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body text-start">
+                <img
+                  src="https://www-konga-com-res.cloudinary.com/w_auto,f_auto,fl_lossy,dpr_auto,q_auto/media/catalog/product/K/Q/180272_1669893539.jpg"
+                  class="card-img-top" alt="...">
+                <p class="h5">Nillkin Ascent Stand For Laptops</p>
+                <p class="h4">₦23,000 </p>
+                <p>Brand - Nillkin</p>
+                <p>Brand</p>
+                <p>NILLKIN ASCENT STAND</p>
+                <p>Nillkin Ascent Stand provides you comfortable viewing angle while using a laptop. Small size,
+                  ultra-thin lightweight design.</p>
+                <p>Ergonomic design with a scientific viewing angle, correct your posture while using a notebook.</p>
+                <p>Not only it can help you relieve pain of neck and shoulder but also is more convenient to carry.</p>
+                <p>Fiber texture+non-slip design can bear 12.5Kg base on scientific measurement.</p>
+                <p>Compatible with the notebook between 11.6 to 15.6 inches. Line-to-line design.</p>
+                <p>Built-in magnet, which makes it can be folded, easy to fold as well as facilitate heat dissipation.
+                </p>
+
+                </span>
+                <span>Contact us if you like this</span>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Done</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card shadow-sm border-0" style="width: 18rem;">
+      <img
+        src="https://www-konga-com-res.cloudinary.com/w_auto,f_auto,fl_lossy,dpr_auto,q_auto/media/catalog/product/R/G/209656_1680359598.jpg"
+        class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">
+          1B NVME M.2 SSD For Laptops</h5>
+        <p class="card-text h4">₦60,000</p>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#seventh">
+          View Specs
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="seventh" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+          aria-labelledby="staticBackdropLabe" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabe">HP Specter</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body text-start">
+                <img
+                  src="https://www-konga-com-res.cloudinary.com/w_auto,f_auto,fl_lossy,dpr_auto,q_auto/media/catalog/product/K/E/86085_1669111198.jpg"
+                  class="card-img-top" alt="...">
+                <p class="h4">
+                  1B NVME M.2 SSD For Laptops</p>
+                <p class="h4">₦60,000</p>
+                <h3>Features:</h3>
+                <ul>
+                  <li>High-speed PCIe NVMe SSD</li>
+                  <li>1TB Capacity</li>
+                  <li>Built with the latest PCIe 3 x 4 controller</li>
+                  <li>2280 M.2 PCIe Gen3 x 4, NVMe 1.3</li>
+                </ul>
+
+                <h3>Specifications:</h3>
+                <ul>
+                  <li>Type: M.2 PCIe NVMe SSD</li>
+                  <li>Capacity: 1TB</li>
+                  <li>Power Consumption: Full: 2.07W, Idle: 0.37W</li>
+                  <li>TBW (Total Bytes Written): 320TB</li>
+                  <li>4K Aligned Random Read: up to 290K IOPs</li>
+                  <li>4K Aligned Random Write: up to 260K IOPs</li>
+                  <li>Sequential Read (ATTO): up to 2,100MB/s</li>
+                  <li>Sequential Write (ATTO): up to 1,650MB/s</li>
+                  <li>Sequential Read (CDM): up to 2,100MB/s</li>
+                  <li>Sequential Write (CDM): up to 1,650MB/s</li>
+                  <li>O/S Supported: Windows® 7, 8.0, 8.1, 10</li>
+                  <li>Dimensions: 8 x 2.2 x 0.38 cm</li>
+                </ul>
+
+                <span>Contact us if you like this</span>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Done</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card shadow-sm border-0" style="width: 18rem;">
+      <img
+        src="https://www-konga-com-res.cloudinary.com/w_auto,f_auto,fl_lossy,dpr_auto,q_auto/media/catalog/product/U/L/211732_1674016971.jpg"
+        class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">A&S Laptop Stand</h5>
+        <p class="card-text h4">₦3,750</p>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#eight">
+          View Specs
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="eight" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+          aria-labelledby="staticBackdropLabe" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabe">HP Specter</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body text-start">
+                <img
+                  src="https://www-konga-com-res.cloudinary.com/w_auto,f_auto,fl_lossy,dpr_auto,q_auto/media/catalog/product/U/L/211732_1674016971.jpg"
+                  class="card-img-top" alt="...">
+                <p class="h5">HA&S Laptop Stand</p>
+                <p class="h4">₦3,750</p>
+                <p>
+                  Portable and Foldable<br>
+                  Multiple Angle and Height Adjustment<br>
+                  Thoughtful and Ergonomic Design<br>
+                  Heat Dissipation Design<br>
+                  Superior Material for Steady Holding<br>
+                </p>
+
+                <h3>Product Parameters and Features:</h3>
+
+                <ul>
+                  <li>Color: Silver</li>
+                  <li>Material: Aluminum alloy + silicone</li>
+                  <li>Weight: 9.17oz</li>
+                  <li>Opened size: 9.4 x 6.5 x 2.16 - 6.1 inches</li>
+                  <li>Folded size: 9.4 x 1.75 x 0.84 inches</li>
+                  <li>Maximum loading capacity: 40 lbs</li>
+                  <li>6-speed height and angle adjustable</li>
+                  <li>Applicable to multiple size laptops and tablets from 10-15.6 inches</li>
+                </ul>
+
+                <h3>Package Includes:</h3>
+
+                <ul>
+                  <li>1 x Aluminum Alloy Adjustable Laptop Stand</li>
+                  <li>1 x Portable storage bag</li>
+                  <li>1 x User manual</li>
+                </ul>
+
+                <h3>Product Details:</h3>
+
+                <ol>
+                  <li>Product name: 6-speed adjustable aluminum alloy foldable laptop stand</li>
+                  <li>Product material: aluminum alloy + silicone</li>
+                  <li>Product weight: Net weight 280g / gross weight 350g</li>
+                  <li>Product Color: Silver</li>
+                  <li>Product package size: 25.2*5.7*3.5CM</li>
+                  <li>Product packing information: 50 pcs / ctn</li>
+                  <li>Applicable products: laptops / books / tablets under 16 inches</li>
+                </ol>
+
+                <h3>Features:</h3>
+
+                <ul>
+                  <li>Feature 1: Foldable storage, does not affect space, can be placed in a computer bag for easy
+                    carrying</li>
+                  <li>Feature 2: Quality comes from details: smooth and smooth, hand-polished.</li>
+                  <li>Feature 3: Fineness is derived from details: equipped with multiple non-slip foot pads, which
+                    effectively prevents the notebook from slipping and damage</li>
+                  <li>Feature 4: Silicone mat is non-slip, reducing friction between the computer and stand contact
+                    surface</li>
+                  <li>Feature 5: Super load bearing 5KG, all notebooks can easily support</li>
+                  <li>Feature 6: No tools required, six gears height adjustable</li>
+                </ul>
+
+                <span>Contact us if you like this</span>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Done</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+
+</html>

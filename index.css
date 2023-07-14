@@ -1,0 +1,16 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.scale{
+    transition: 1s;
+}
+.scale:hover{
+    transform: scale(1.1);
+    z-index: 2;
+    transition: transform 500ms ease;
+}
+.contact{
+    height: 50px;
+}
